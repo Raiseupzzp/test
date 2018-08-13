@@ -1,0 +1,106 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+     
+    	//demoMath();
+    	//demoRandom();
+    	//demoString();
+    	//demoList();
+    	//demoSet();
+    	demoKeyValue();
+    }
+    public static void print(int num,Object o){
+    	 System.out.println("{"+num+"}"+" "+o.toString());
+    }
+    public static void demoRandom(){
+    	//double ran=Math.random();
+    	Random r=new Random();
+    	r.setSeed(1);
+    	for(int i=0;i<4;i++){
+    		int b=r.nextInt(100);
+    		//double ran=Math.random();
+    		print(1,b);
+    	}
+    }
+    public static void demoMath(){
+		float a=Math.max(13.5f, 1.0f);
+		print(1,a);
+		double b=Math.abs(-5.333565);
+		print(2,b);
+	}
+    public static void demoString(){
+    	String str="hellow world";
+    	for(char c:str.toCharArray()){
+    		print(1,c);
+    	}
+    	String str2=str.replaceAll("o|w","a");
+    	print(2,str2);
+    	String str3=str.replace('o','a');
+    	print(3,str3);
+    	print(4,str.concat("!!"));
+    }
+    public static void demoList(){
+    	List<String> strlist=new ArrayList<String>();
+    	for(int i=0;i<4;i++){
+    		strlist.add(String.valueOf(i));
+    	}
+    	print(1,strlist);
+    	List<String> strlistB=new ArrayList<String>();
+    	for(int i=0;i<4;i++){
+    		strlistB.add(String.valueOf(i*i));
+    	}
+    	strlist.addAll(strlistB);
+    	print(2,strlist);
+    	strlist.remove(0);
+    	print(3,strlist);
+    	strlist.remove(String.valueOf(1));
+    	print(4,strlist);
+    	
+    	Collections.sort(strlist);
+    	print(6,strlist);
+    	Collections.reverse(strlist);
+    	print(7,strlist);
+    	Collections.sort(strlist, new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				// TODO Auto-generated method stub
+				return o1.compareTo(o2);
+			}
+		});
+    	print(8,strlist);
+    }
+    public static void demoSet(){
+    	Set<String> strSet=new HashSet<String>();
+    	for(int i=0;i<4;i++){
+    		strSet.add(String.valueOf(i));
+    		strSet.add(String.valueOf(i));
+    		strSet.add(String.valueOf(i));
+    		strSet.add(String.valueOf(i));
+    	}
+    	print(1,strSet);
+    	print(2,strSet.contains(4));
+    	strSet.addAll(Arrays.asList(new String[]{"A","B","C"}));
+    	print(3,strSet);
+    	for(String value : strSet){
+    		print(4,value);
+    	
+    	}
+    }
+    public static void demoKeyValue(){
+    	Map<String,String>map=new HashMap<>();
+    	for(int i=0;i<4;i++){
+    		map.put(String.valueOf(i), String.valueOf(i*i));
+    	}
+    	print(1,map);
+    	for(Map.Entry<String,String> entry : map.entrySet()){
+    		print(2,entry.getKey()+":"+entry.getValue());
+    	}
+    	print(3,map.keySet());
+    	print(4,map.values());
+    	print(5,map.containsKey("2"));
+    	print(7,map.replace("1", "A"));
+    	print(6,map.get("1"));
+    }
+    
+}
